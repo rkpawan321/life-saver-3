@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: #f7f7f8;
+  margin: 0;
+  padding: 0;
+  color: #222;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 32px 24px 24px 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.note-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
-.App-link {
-  color: #61dafb;
+.note-form textarea {
+  min-height: 80px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 14px;
+  font-size: 1.1rem;
+  resize: vertical;
+  background: #fafbfc;
+  transition: border 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.note-form textarea:focus {
+  border: 1.5px solid #a3a3a3;
+  outline: none;
+}
+
+.note-form button {
+  align-self: flex-end;
+  background: #ececec;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.note-form button:hover {
+  background: #e0e0e0;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.note-card {
+  background: #fafbfc;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 18px 20px;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  word-break: break-word;
+  border: 1px solid #ececec;
+}
+
+@media (max-width: 800px) {
+  .app-container {
+    max-width: 98vw;
+    padding: 12px 2vw;
   }
 }
