@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { collection, addDoc, query, orderBy, onSnapshot, doc, deleteDoc, updateDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, query, orderBy, onSnapshot, doc, deleteDoc, updateDoc, getDocs, where } from 'firebase/firestore';
 import { db } from './firebase';
 import './App.css';
 
@@ -38,11 +38,19 @@ function App() {
     e.preventDefault();
     if (!newNote.trim()) return;
     try {
+      // Prevent duplicate notes with the same content
+      const q = query(collection(db, 'notes'), where('content', '==', newNote.trim()));
+      const snapshot = await getDocs(q);
+      if (!snapshot.empty) {
+        setError('A note with the same content already exists.');
+        return;
+      }
       await addDoc(collection(db, 'notes'), {
         content: newNote,
         timestamp: new Date()
       });
       setNewNote('');
+      setError(null);
     } catch (error) {
       setError(error.message);
     }
