@@ -9,12 +9,14 @@ body {
 }
 
 .app-container {
-  max-width: 700px;
-  margin: 40px auto;
+  width: 100vw;
+  min-height: 100vh;
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  padding: 32px 24px 24px 24px;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 32px 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 h1 {
@@ -24,11 +26,33 @@ h1 {
   letter-spacing: -1px;
 }
 
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.note-card {
+  background: #fafbfc;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 18px 24px;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  word-break: break-word;
+  border: 1px solid #ececec;
+  overflow-x: auto;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
 .note-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 32px;
+  margin-top: 32px;
+  padding: 0 24px;
 }
 
 .note-form textarea {
@@ -40,6 +64,7 @@ h1 {
   resize: vertical;
   background: #fafbfc;
   transition: border 0.2s;
+  box-sizing: border-box;
 }
 
 .note-form textarea:focus {
@@ -64,26 +89,70 @@ h1 {
   background: #e0e0e0;
 }
 
-.notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+/* Markdown styles */
+.note-card h1, .note-card h2, .note-card h3 {
+  font-weight: 600;
+  margin: 0.7em 0 0.4em 0;
 }
-
-.note-card {
-  background: #fafbfc;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 18px 20px;
-  font-size: 1.08rem;
-  line-height: 1.7;
-  word-break: break-word;
-  border: 1px solid #ececec;
+.note-card ul, .note-card ol {
+  margin: 0.5em 0 0.5em 1.2em;
+}
+.note-card blockquote {
+  border-left: 4px solid #e0e0e0;
+  margin: 0.5em 0;
+  padding: 0.5em 1em;
+  color: #555;
+  background: #f9f9fa;
+}
+.note-card code {
+  background: #f6f8fa;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.98em;
+}
+.note-card pre {
+  background: #f6f8fa !important;
+  border-radius: 8px;
+  padding: 1em !important;
+  overflow-x: auto;
+  margin: 12px 0 !important;
+  font-size: 1em;
 }
 
 @media (max-width: 800px) {
   .app-container {
-    max-width: 98vw;
-    padding: 12px 2vw;
+    width: 100vw;
+    padding: 0;
+    min-height: 100vh;
+  }
+  .note-card {
+    padding: 12px 6px;
+    font-size: 1em;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+  }
+  .note-form {
+    padding: 0 6px;
+  }
+  .note-form textarea {
+    font-size: 1em;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .app-container {
+    padding: 0;
+  }
+  .note-card {
+    padding: 8px 2px;
+    font-size: 0.98em;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+  }
+  .note-form {
+    padding: 0 2px;
   }
 }
