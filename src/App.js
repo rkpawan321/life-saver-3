@@ -300,9 +300,7 @@ function App() {
   };
 
   const handleUnreadClick = () => {
-    if (notesListRef.current) {
-      notesListRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setUnreadCount(0);
   };
 
