@@ -54,6 +54,15 @@ h1 {
   overflow: visible;
 }
 
+/* Add alternating background colors for notes */
+.notes-list .note-card:nth-child(odd) {
+  background: #f0f7ff;  /* Light blue tint */
+}
+
+.notes-list .note-card:nth-child(even) {
+  background: #fff5f5;  /* Light pink tint */
+}
+
 .note-card .react-markdown {
   padding: 0;
   background: transparent;
